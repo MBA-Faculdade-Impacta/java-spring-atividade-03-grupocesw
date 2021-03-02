@@ -36,8 +36,7 @@ public class SimularValoresControllerTests {
 		
 		String response = result.getResponse().getContentAsString();
 		
-		assertEquals("Toca sendo pago A vista no dinheiro com 10% de desconto custará 31.5 reais".toUpperCase(), response.toUpperCase());
-		
+		assertEquals("Toca sendo pago à vista no dinheiro com 10% de desconto custará 31,50 reais".toUpperCase(), response.toUpperCase());
 	}
 	
 	@Test
@@ -50,7 +49,7 @@ public class SimularValoresControllerTests {
 		
 		String response = result.getResponse().getContentAsString();
 		
-		assertEquals("Luvas sendo pago Em duas parcelas sem nenhum desconto custará 19.5 reais".toUpperCase(), response.toUpperCase());
+		assertEquals("Luvas sendo pago em duas parcelas sem nenhum desconto custará 19,50 reais".toUpperCase(), response.toUpperCase());
 		
 	}
 	
