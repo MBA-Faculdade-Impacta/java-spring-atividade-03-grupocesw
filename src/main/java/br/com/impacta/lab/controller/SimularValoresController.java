@@ -1,5 +1,7 @@
 package br.com.impacta.lab.controller;
 
+import java.util.Locale;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,8 @@ public class SimularValoresController {
 	@GetMapping
 	public ResponseEntity<String> simularValores(@RequestParam(name="codigoProduto") int productId,
 			@RequestParam(name="codTipoPagamento") int typePaymentId) {
+
+		Locale.setDefault(Locale.US);
 
 		String productionDescription = "";
 		String conditionDescription = "";
@@ -44,24 +48,24 @@ public class SimularValoresController {
 	    
 	    switch (typePaymentId) {
 		    case 1:
-		    	conditionDescription = "à vista no dinheiro com 10% de desconto";
+		    	conditionDescription = "A vista no dinheiro com 10% de desconto";
 		    	value -= (value * 0.10);
 		    	break;
 		    case 2:
-		    	conditionDescription = "à vista no cartão de crédito  com 5% de desconto";
+		    	conditionDescription = "A vista no cartão de crédito  com 5% de desconto";
 		    	value -= (value * 0.05);
 		    	break;
 		    case 3:
-		    	conditionDescription = "em duas parcelas sem nenhum desconto";
+		    	conditionDescription = "Em duas parcelas sem nenhum desconto";
 		    	break;
 		    case 4:
-		    	conditionDescription = "em três vezes com 10% de juros";
+		    	conditionDescription = "Em três vezes com 10% de juros";
 		    	value += (value * 0.10);
 		    	break;
 	    }
 	    
 	    return ResponseEntity.ok(
-	    		String.format("%s sendo pago %s custará %.2f reais",
+	    		String.format("%s sendo pago %s custará %.1f reais",
 	    				productionDescription, conditionDescription, value)
 	    		);
 	}
